@@ -1,16 +1,21 @@
 version: '3.5'
 services:
   web:
+    domainname: yuckyfoo.com
     image: recondockeradmin/apache
     build: 
       context: apache_image
     ports:
-      - "8000:8000"
+      - "80:80"
+      - "81:81"
+      - "8080:8080"
     volumes:
       - ./gci:/var/www/gci
-      - $PWD/sites-available:/etc/apache2/sites-available
+      - ./sites-available:/etc/apache2/sites-available
+      - ./apache2:/etc/apache2
         #cd /etc/apache2/sites-available/
 
 
 #volumes:
+  #apache2:
   #logvolume01: {}
