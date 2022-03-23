@@ -1,0 +1,16 @@
+VERSION: 3.5
+services:
+  web:
+    image: recondockeradmin/apache
+    context: apache
+    ports:
+      - "8000:8000"
+    volumes:
+      - gci:/var/www/gci
+      - sites-available:/etc/apache2/sites-available
+    links:
+      - redis
+  redis:
+    image: redis
+volumes:
+  logvolume01: {}
